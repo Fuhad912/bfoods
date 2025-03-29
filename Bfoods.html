@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bfoods - Premium Nigerian Biscuits | Osogbo</title>
+    <style>
+        /* ===== DARK MODE VARIABLES ===== */
+        :root {
+            --primary: #FFA726;  /* Vibrant orange */
+            --dark: #121212;     /* Deep dark background */
+            --darker: #1E1E1E;   /* Card backgrounds */
+            --light: #F5F5F5;    /* Light text */
+            --gray: #757575;     /* Secondary text */
+            --gold: #FFD700;    /* Accent gold */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            background-color: var(--darker);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,167,38,0.2);
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1.5px;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,167,38,0.1);
+            color: var(--primary);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: 
+                linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)),
+                url('https://images.unsplash.com/photo-1586444248902-2f64eddc13df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+        
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 3rem;
+            color: var(--gray);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(255,215,0,0.4);
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            text-align: center;
+            background-color: var(--darker);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            margin: -80px auto 0;
+            position: relative;
+            z-index: 3;
+            max-width: 1200px;
+            padding: 4rem;
+            border: 1px solid rgba(255,167,38,0.1);
+        }
+        
+        .about p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+        }
+        
+        .about-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+        
+        /* ===== PRODUCTS SECTION ===== */
+        .products {
+            padding-top: 8rem;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .product-card {
+            background: var(--darker);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.4s;
+            position: relative;
+            border: 1px solid rgba(255,167,38,0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(255,167,38,0.1);
+            border-color: rgba(255,167,38,0.3);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+            border-bottom: 1px solid rgba(255,167,38,0.1);
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.8rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .product-info p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .price {
+            font-weight: 800;
+            color: var(--gold);
+            font-size: 1.5rem;
+            display: block;
+            margin: 1rem 0;
+        }
+        
+        .whatsapp-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            background-color: var(--darker);
+            text-align: center;
+            border-top: 1px solid rgba(255,167,38,0.1);
+            border-bottom: 1px solid rgba(255,167,38,0.1);
+        }
+        
+        .testimonials h2 {
+            color: var(--gold);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 2.5rem;
+            border-radius: 15px;
+            position: relative;
+            border: 1px solid rgba(255,167,38,0.1);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255,167,38,0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: var(--gray);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 6rem 5%;
+        }
+        
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--darker);
+            padding: 3.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,167,38,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            background-color: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255,167,38,0.2);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            color: var(--light);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255,167,38,0.2);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 180px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 1.3rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            font-weight: 700;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,215,0,0.3);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #0A0A0A;
+            color: var(--light);
+            padding: 5rem 5% 3rem;
+            border-top: 1px solid rgba(255,167,38,0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column p, 
+        .footer-column a {
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            display: block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,167,38,0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+            color: var(--light);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            color: var(--gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">B<span>foods</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Osogbo's Finest Biscuits</h1>
+            <p>Premium quality, traditional taste - baked fresh daily in Osun State</p>
+            <a href="#products" class="cta-button">SHOP NOW</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>Our Story</h2>
+        <p>Founded in the heart of Osogbo, Bfoods has been crafting delicious biscuits since 2010. Using generations-old recipes and locally-sourced ingredients, we bring authentic Nigerian flavors to every home. Our commitment to quality has made us Osun State's favorite biscuit brand.</p>
+        
+        <div class="about-stats">
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years in Business</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Local Suppliers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1M+</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Products Section -->
+<section class="products" id="products">
+    <h2>Our Biscuit Range</h2>
+    <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-badge">BESTSELLER</div>
+            <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pure Bliss" class="product-image">
+            <div class="product-info">
+                <h3>Pure Bliss</h3>
+                <p>Buttery richness with a delicate crunch that melts in your mouth</p>
+                <span class="price">₦3,500 per pack</span>
+                <a href="https://wa.me/2348032014199?text=I%20want%20to%20order%20Pure%20Bliss%20biscuits" class="whatsapp-btn">Order on WhatsApp</a>
+            </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-badge">PREMIUM</div>
+            <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Fabulous Biscuits" class="product-image">
+            <div class="product-info">
+                <h3>Fabulous Biscuits</h3>
+                <p>Luxurious texture with a hint of vanilla and golden crispness</p>
+                <span class="price">₦4,000 per pack</span>
+                <a href="https://wa.me/2348032014199?text=I%20want%20to%20order%20Fabulous%20Biscuits" class="whatsapp-btn">Order on WhatsApp</a>
+            </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-badge">NEW</div>
+            <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Coaster" class="product-image">
+            <div class="product-info">
+                <h3>Coaster</h3>
+                <p>Classic tea biscuits with perfect dunking texture</p>
+                <span class="price">₦3,800 per pack</span>
+                <a href="https://wa.me/2348032014199?text=I%20want%20to%20order%20Coaster%20biscuits" class="whatsapp-btn">Order on WhatsApp</a>
+            </div>
+        </div>
+        
+        <!-- Product 4 -->
+        <div class="product-card">
+            <div class="product-badge">SPICY</div>
+            <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ginger Zing" class="product-image">
+            <div class="product-info">
+                <h3>Ginger Zing</h3>
+                <p>Warm ginger spice with a cinnamon kick</p>
+                <span class="price">₦3,200 per pack</span>
+                <a href="https://wa.me/2348032014199?text=I%20want%20to%20order%20Ginger%20Zing%20biscuits" class="whatsapp-btn">Order on WhatsApp</a>
+            </div>
+        </div>
+        
+       <!-- Product 5 - Coconut Dream -->
+<div class="product-card">
+    <div class="product-badge">CRUNCHY</div>
+    <!-- Updated to a permanent coconut biscuit image -->
+    <img src="https://images.unsplash.com/photo-1606983340123-2d2b1a01b4e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Coconut Dream" class="product-image">
+    <div class="product-info">
+        <h3>Coconut Dream</h3>
+        <p>Tropical coconut flakes in every bite</p>
+        <span class="price">₦3,600 per pack</span>
+        <a href="https://wa.me/2348032014199?text=I%20want%20to%20order%20Coconut%20Dream%20biscuits" class="whatsapp-btn">Order on WhatsApp</a>
+    </div>
+</div>
+
+<!-- Product 6 - Choco Stars -->
+<div class="product-card">
+    <div class="product-badge">KIDS LOVE IT</div>
+    <!-- Updated to a permanent chocolate biscuit image -->
+    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Choco Stars" class="product-image">
+    <div class="product-info">
+        <h3>Choco Stars</h3>
+        <p>Fun star-shaped chocolate biscuits</p>
+        <span class="price">₦3,300 per pack</span>
+        <a href="https://wa.me/2348032014199?text=I%20want%20to%20order%20Choco%20Stars%20biscuits" class="whatsapp-btn">Order on WhatsApp</a>
+    </div>
+</div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">Bfoods biscuits are the only ones my children will eat! The quality is unmatched and the taste brings back childhood memories.</p>
+                <div class="testimonial-author">Mrs. Adebayo</div>
+                <div class="testimonial-role">Loyal Customer, Osogbo</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">As a supermarket owner, Bfoods products sell faster than any other biscuit brand. Customers keep coming back for more!</p>
+                <div class="testimonial-author">Mr. Johnson</div>
+                <div class="testimonial-role">Retail Partner, Ilesa</div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">The perfect blend of crunch and flavor. I serve Bfoods biscuits to all my guests and they always ask where to buy them.</p>
+                <div class="testimonial-author">Chief Mrs. Okonkwo</div>
+                <div class="testimonial-role">Restaurant Owner, Ile-Ife</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Send Us a Message</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="0803 201 4199">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="wholesale">Wholesale Inquiry</option>
+                        <option value="retail">Retail Purchase</option>
+                        <option value="feedback">Product Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" placeholder="How can we help you?" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Bfoods</h3>
+                <p>Osun State's premier biscuit manufacturer since 2010. We combine traditional recipes with modern quality standards.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/bfoods" aria-label="Facebook">📱</a>
+                    <a href="https://instagram.com/bfoods" aria-label="Instagram">📸</a>
+                    <a href="https://wa.me/2348032014199" aria-label="WhatsApp">💬</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><strong>Address:</strong> 8, Lekan Adepoju Street, Osogbo, Osun State</p>
+                <a href="tel:08032014199"><strong>Phone:</strong> 0803 201 4199</a>
+                <a href="mailto:farbello1@gmail.com"><strong>Email:</strong> farbello1@gmail.com</a>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Business Hours</h3>
+                <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 4:00 PM</p>
+                <p><strong>Sunday:</strong> Closed</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Bfoods Nigeria. All Rights Reserved. | Proudly Made in Osogbo</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== FORM SUBMISSION =====
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            
+            // Show success message
+            alert(`Thank you ${name}! Your ${subject.toLowerCase()} request has been received. We'll contact you shortly.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+
+        // ===== ANIMATE SECTIONS ON SCROLL =====
+        const animateOnScroll = () => {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionVisible = 150;
+                
+                if (sectionTop < windowHeight - sectionVisible) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Initialize sections with fade-in effect
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1)';
+        });
+
+        // Trigger animations when page loads
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            
+            // Animate hero content
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }
+        });
+
+        // Trigger animations on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
+    
